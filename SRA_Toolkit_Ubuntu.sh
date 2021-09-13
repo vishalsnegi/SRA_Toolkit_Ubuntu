@@ -1,13 +1,10 @@
 
 ## ############################################################### ##
-## --------------------------------------------------------------- ##
 ## SRA Toolkit for Ubuntu in Windows Subsystem for Linux (WSL)
-## --------------------------------------------------------------- ##
 ## ############################################################### ##
 
 ## --------------------------------------- ## 
 ##       Set working directory
-## --------------------------------------- ##
 
 ## In Windows Subsystem for Linux (WSL) The C:\ drive is mounted as /mnt/c/, 
 ## E:\ is mounted as /mnt/e/ et cetra. Therefore, E:/Linux should be at /mnt/e/Linux.
@@ -35,7 +32,6 @@ which fasterq-dump
 
 ## --------------------------------------- ## 
 ##       Toolkit Configuration
-## --------------------------------------- ##
 
 ## If you are using SRA Toolkit version 2.4 or higher, 
 ## you should run the configuration tool located within the bin subdirectory of the Toolkit package.
@@ -64,7 +60,6 @@ fastq-dump --stdout SRR390728 | head -n 8
 
 ## --------------------------------------- ## 
 ##       prefetch and fasterq dump
-## --------------------------------------- ##
 
 ## The combination of prefetch + fasterq-dump is the fastest way to extract FASTQ-files
 ## from SRA-accessions. The prefetch tool downloads all necessary files to your computer. 
@@ -86,7 +81,6 @@ vdb-dump --info SRR13764788
 
 ## --------------------------------------- ## 
 ##       Downloading data from SRA
-## --------------------------------------- ##
 
 ## You can download SRA fastq files using the fasterq-dump tool, which will download the fastq file 
 ## into your current working directory by default. (Note: the old fastq-dump is being deprecated). 
@@ -94,10 +88,15 @@ vdb-dump --info SRR13764788
 ## (in the example below, in /scratch/$USER) that will get deleted after the download is complete.
 
 fasterq-dump SRR13764788
+## The fasterq-dump-tool performs a split-3 operation by default
+## The above run splits the fastq file into two files 
+## SRR13764788_1.fastq
+## SRR13764788_2.fastq
+## To concatenate use the following command
+fasterq-dump SRR000001 --concatenate-reads --include-technical
 
 ## --------------------------------------- ## 
 ##           REFERENCE(S)
-## --------------------------------------- ##
 
 ## https://github.com/ncbi/sra-tools/wiki
 
